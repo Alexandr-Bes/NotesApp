@@ -25,7 +25,15 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = notesTableView.dequeueReusableCell(withIdentifier: NoteTableViewCell.identifier, for: indexPath) as? NoteTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.dateOfNoteLabel.text = "21.02.18"
+        let noteText = "Hello my name is Alexander"
+        let truncText = noteText.trunc(length: 100)
+        cell.noteLabel.text = truncText
+        cell.timeOfNoteLabel.text = "12:12"
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 
@@ -34,6 +42,8 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
         title = "Заметки"
         notesTableView.delegate = self
         notesTableView.dataSource = self
+        // Register for NoteTableViewCell
+        notesTableView.register(UINib(nibName: NoteTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: NoteTableViewCell.identifier)
     }
 
 

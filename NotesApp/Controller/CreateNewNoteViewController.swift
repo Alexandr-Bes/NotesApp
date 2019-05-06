@@ -11,11 +11,18 @@ import UIKit
 class CreateNewNoteViewController: UIViewController {
 
     // MARK: Outlets
+    @IBOutlet weak var newNoteTextView: UITextView!
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+            self.newNoteTextView.becomeFirstResponder()
 
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        newNoteTextView.endEditing(true)
     }
     
     // MARK: Actions

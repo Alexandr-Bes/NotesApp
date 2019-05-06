@@ -55,16 +55,33 @@
                     <view key="view" contentMode="scaleToFill" id="qwB-es-Vdy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="03t-31-Mz9">
+                                <rect key="frame" x="16" y="80" width="343" height="587"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="03t-31-Mz9" firstAttribute="leading" secondItem="jyi-kT-cD6" secondAttribute="leading" constant="16" id="594-Ri-fvh"/>
+                            <constraint firstItem="03t-31-Mz9" firstAttribute="top" secondItem="jyi-kT-cD6" secondAttribute="top" constant="16" id="XDQ-0W-vI3"/>
+                            <constraint firstItem="jyi-kT-cD6" firstAttribute="trailing" secondItem="03t-31-Mz9" secondAttribute="trailing" constant="16" id="drJ-By-Nkm"/>
+                            <constraint firstItem="03t-31-Mz9" firstAttribute="bottom" secondItem="jyi-kT-cD6" secondAttribute="bottom" id="jxf-dj-hNw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jyi-kT-cD6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Новая заметка" id="3XW-vp-dXL">
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="frA-9p-enh"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="newNoteTextView" destination="03t-31-Mz9" id="LBL-qq-ByL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7M-aC-3T4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="128"/>
+            <point key="canvasLocation" x="1701.5999999999999" y="127.28635682158921"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fQp-Dq-a8H">
