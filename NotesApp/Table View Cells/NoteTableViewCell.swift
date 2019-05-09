@@ -21,13 +21,18 @@ class NoteTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var timeOfNoteLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    var cellModel: Note? {
+        didSet {
+            guard let cellModel = cellModel else { return }
+            setupUI(cellModel: cellModel)
+        }
     }
 
-    private func setupUI() {
-        
+    private func setupUI(cellModel: Note) {
+        dateOfNoteLabel.text = cellModel.time.timeFormatter(time: cellModel.time, dateFormat: "dd.MM.yyyy")
+        timeOfNoteLabel.text = cellModel.time.timeFormatter(time: cellModel.time, dateFormat: "HH:mm")
+        noteLabel.text = cellModel.noteText
+        accessoryType = .disclosureIndicator
     }
 
 }

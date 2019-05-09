@@ -17,6 +17,8 @@
 		FA1D63632280786200C2AA13 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1D63612280786200C2AA13 /* NoteTableViewCell.xib */; };
 		FA1D636622807FB100C2AA13 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D636522807FB100C2AA13 /* UITableViewCell+Extension.swift */; };
 		FA1D63682280873100C2AA13 /* StringTruncate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D63672280873100C2AA13 /* StringTruncate+Extension.swift */; };
+		FADD93A02283373E006179C8 /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD939F2283373E006179C8 /* NotesModel.swift */; };
+		FADD93A222846DA8006179C8 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD93A122846DA8006179C8 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		FA1D63612280786200C2AA13 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		FA1D636522807FB100C2AA13 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		FA1D63672280873100C2AA13 /* StringTruncate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringTruncate+Extension.swift"; sourceTree = "<group>"; };
+		FADD939F2283373E006179C8 /* NotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotesModel.swift; path = NotesApp/Storyboards/NotesModel.swift; sourceTree = SOURCE_ROOT; };
+		FADD93A122846DA8006179C8 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		FA1D6356228061CC00C2AA13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FADD939F2283373E006179C8 /* NotesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			children = (
 				FA1D636522807FB100C2AA13 /* UITableViewCell+Extension.swift */,
 				FA1D63672280873100C2AA13 /* StringTruncate+Extension.swift */,
+				FADD93A122846DA8006179C8 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -204,6 +210,8 @@
 				FA1D635B228064E600C2AA13 /* CreateNewNoteViewController.swift in Sources */,
 				FA1D6345228060C500C2AA13 /* AppDelegate.swift in Sources */,
 				FA1D63682280873100C2AA13 /* StringTruncate+Extension.swift in Sources */,
+				FADD93A222846DA8006179C8 /* Date+Extension.swift in Sources */,
+				FADD93A02283373E006179C8 /* NotesModel.swift in Sources */,
 				FA1D63622280786200C2AA13 /* NoteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

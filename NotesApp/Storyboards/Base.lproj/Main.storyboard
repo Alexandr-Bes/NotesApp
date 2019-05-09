@@ -13,7 +13,7 @@
         <!--Заметки-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Заметки" id="BYZ-38-t0r" customClass="NotesViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotesViewController" title="Заметки" id="BYZ-38-t0r" customClass="NotesViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,22 +36,38 @@
                     <navigationItem key="navigationItem" id="u4k-hu-9ke">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JM5-WY-Eei">
                             <connections>
-                                <segue destination="3U9-lo-qaG" kind="show" id="C2h-oO-AIp"/>
+                                <segue destination="m2Z-34-ZAt" kind="showDetail" identifier="newNote" id="C2h-oO-AIp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="notesTableView" destination="HNF-Jv-WAd" id="P9a-CZ-7ge"/>
+                        <segue destination="UYw-lZ-ODC" kind="show" identifier="editNote" id="MP9-iS-eIR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="916" y="128.18590704647679"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ITu-K5-AV7">
+            <objects>
+                <viewController id="UYw-lZ-ODC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZIQ-ka-45m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="lg7-Jd-lIo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kru-IA-V07" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="872"/>
+        </scene>
         <!--Новая заметка-->
         <scene sceneID="htw-Kj-LbW">
             <objects>
-                <viewController id="3U9-lo-qaG" customClass="CreateNewNoteViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateNewNoteViewController" id="3U9-lo-qaG" customClass="CreateNewNoteViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qwB-es-Vdy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,15 +89,25 @@
                         <viewLayoutGuide key="safeArea" id="jyi-kT-cD6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Новая заметка" id="3XW-vp-dXL">
-                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="frA-9p-enh"/>
+                        <barButtonItem key="leftBarButtonItem" title="Назад" id="F1M-Ph-PcQ">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="3U9-lo-qaG" id="ITB-Bp-Xl5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="frA-9p-enh">
+                            <connections>
+                                <action selector="saveNote:" destination="3U9-lo-qaG" id="6l4-co-2hJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="newNoteTextView" destination="03t-31-Mz9" id="LBL-qq-ByL"/>
+                        <outlet property="saveButton" destination="frA-9p-enh" id="6KO-Ki-fuL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7M-aC-3T4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701.5999999999999" y="127.28635682158921"/>
+            <point key="canvasLocation" x="1756" y="128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fQp-Dq-a8H">
@@ -91,6 +117,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5r5-wX-RcU">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.74575666240000005" green="0.3147824743" blue="0.2108116263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -100,6 +127,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TeI-78-irl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="172" y="129"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eQv-5B-2z4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m2Z-34-ZAt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HeK-zX-Lay">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.74575666240000005" green="0.3147824743" blue="0.2108116263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3U9-lo-qaG" kind="relationship" relationship="rootViewController" id="eE7-pX-hBK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QAn-eI-JPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1756" y="-573"/>
         </scene>
     </scenes>
 </document>
