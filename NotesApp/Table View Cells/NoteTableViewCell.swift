@@ -33,6 +33,7 @@ class NoteTableViewCell: UITableViewCell {
         timeOfNoteLabel.text = cellModel.time.timeFormatter(time: cellModel.time, dateFormat: "HH:mm")
         noteLabel.text = cellModel.noteText
         accessoryType = .disclosureIndicator
+        self.backgroundColor = UIColor.init(red: 50, green: 53, blue: 61, alpha: 1)
     }
 
 }

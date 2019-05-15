@@ -22,19 +22,36 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" id="Jj0-YJ-fQg">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jj0-YJ-fQg" id="lGj-3S-iZL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="HNF-Jv-WAd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KBG-OV-iTN"/>
-                            <constraint firstItem="HNF-Jv-WAd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UBh-Xj-huk"/>
-                            <constraint firstItem="HNF-Jv-WAd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hQN-fO-IrS"/>
-                            <constraint firstItem="HNF-Jv-WAd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wfx-k0-KHr"/>
+                            <constraint firstItem="HNF-Jv-WAd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Kvs-fl-7ez"/>
+                            <constraint firstItem="HNF-Jv-WAd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dLx-jY-Wnf"/>
+                            <constraint firstItem="HNF-Jv-WAd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lX6-bl-G1k"/>
+                            <constraint firstItem="HNF-Jv-WAd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="wPJ-ww-ago"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="u4k-hu-9ke">
+                        <barButtonItem key="leftBarButtonItem" image="sortIcon" id="FaV-I0-3eX">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="sortNotes:" destination="BYZ-38-t0r" id="qcg-kR-yi4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JM5-WY-Eei">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="m2Z-34-ZAt" kind="showDetail" identifier="newNote" id="C2h-oO-AIp"/>
                             </connections>
@@ -42,17 +59,18 @@
                     </navigationItem>
                     <connections>
                         <outlet property="notesTableView" destination="HNF-Jv-WAd" id="P9a-CZ-7ge"/>
+                        <outlet property="sortNotesButton" destination="FaV-I0-3eX" id="2Zc-7T-PFs"/>
                         <segue destination="UYw-lZ-ODC" kind="show" identifier="editNote" id="MP9-iS-eIR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="128.18590704647679"/>
+            <point key="canvasLocation" x="914.39999999999998" y="127.28635682158921"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="ITu-K5-AV7">
             <objects>
-                <viewController id="UYw-lZ-ODC" sceneMemberID="viewController">
+                <viewController id="UYw-lZ-ODC" customClass="DetailViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIQ-ka-45m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kru-IA-V07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="872"/>
+            <point key="canvasLocation" x="914" y="943"/>
         </scene>
         <!--Новая заметка-->
         <scene sceneID="htw-Kj-LbW">
@@ -117,9 +135,15 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5r5-wX-RcU">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.74575666240000005" green="0.3147824743" blue="0.2108116263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.19607843137254902" green="0.20784313725490194" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pRE-QI-yzR">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="H7I-lS-ptc"/>
                     </connections>
@@ -136,7 +160,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HeK-zX-Lay">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.74575666240000005" green="0.3147824743" blue="0.2108116263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -148,4 +171,8 @@
             <point key="canvasLocation" x="1756" y="-573"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="sortIcon" width="25" height="25"/>
+    </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 
 class CreateNewNoteViewController: UIViewController {
 
-    // MARK: Outlets
+    // MARK: - Outlets
     @IBOutlet weak var newNoteTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
@@ -32,7 +32,7 @@ class CreateNewNoteViewController: UIViewController {
         
     }
     
-    // MARK: Actions
+    // MARK: - Actions
     @IBAction func saveNote(_ sender: UIBarButtonItem) {
         let notesVC = storyboard?.instantiateViewController(withIdentifier: "NotesViewController") as! NotesViewController
         note.noteText = newNoteTextView.text
@@ -61,3 +61,4 @@ class CreateNewNoteViewController: UIViewController {
     */
 
 }
+
