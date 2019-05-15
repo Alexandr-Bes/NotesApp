@@ -17,14 +17,14 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
     // MARK: - Properties
     let defaults = UserDefaults.standard
     var allNotes = NoteString.globalNote.notes
-    var notesData: NotesModel = NotesModel() {
-        didSet {
-            DispatchQueue.main.async {
-                self.notesTableView.reloadData()
-            }
-        }
-    }
-    let test = ["Hello", "Love", "Go Ahead", "Fuck U", "Hello", "Love", "Go Ahead", "Fuck U", "Hello", "Love", "Go Ahead", "Fuck U", "Hello", "Love", "Go Ahead", "Fuck U"]
+//    var notesData: NotesModel = NotesModel() {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.notesTableView.reloadData()
+//            }
+//        }
+//    }
+    var test = ["Hello", "Love", "Go Ahead", "Fuck U", "Hello", "Love", "Go Ahead", "Fuck U", "Hello", "Love", "Go Ahead", "Fuck U", "Hello", "Love", "Go Ahead", "Fuck U"]
 //    lazy var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
 
     // MARK: - Lifecycle Methods
@@ -35,9 +35,8 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print("View will appear notesData: \(notesData)")
-        notesTableView.reloadData()
+        print(test.last)
+//        notesTableView.reloadData()
         print(allNotes)
     }
 
@@ -53,7 +52,7 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = notesTableView.dequeueReusableCell(withIdentifier: NoteTableViewCell.identifier, for: indexPath) as? NoteTableViewCell else {
+        guard let cell = notesTableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as? NoteTableViewCell else {
             return UITableViewCell()
         }
 //        cell.cellModel = notesData.notes[indexPath.row]
@@ -75,6 +74,19 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
 
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "editNote":
+            let detailVC = segue.destination as! DetailViewController
+            var indexPath: IndexPath = self.notesTableView.indexPathForSelectedRow!
+            detailVC.noteText = test[indexPath.row]
+        case "createNewNote":
+            print("Create")
+        default:
+            break
+        }
+    }
 
     // Private Methods
     private func setupUI() {
@@ -82,7 +94,8 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
         notesTableView.dataSource = self
         notesTableView.delegate = self
         // Register for NoteTableViewCell
-        notesTableView.register(UINib(nibName: NoteTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: NoteTableViewCell.identifier)
+//        notesTableView.register(UINib(nibName: NoteTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: NoteTableViewCell.identifier)
+        notesTableView.register(UINib(nibName: NoteTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: "noteCell")
         notesTableView.keyboardDismissMode = .onDrag
         setupNavBar()
     }
@@ -95,13 +108,6 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
         navigationItem.searchController = searchController
     }
 
-    func timeFormatter(time: Date, dateFormat: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = dateFormat
-
-        let newDate = dateFormatter.string(from: time)
-        return newDate
-    }
 
 }
 
