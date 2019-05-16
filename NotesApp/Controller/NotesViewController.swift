@@ -16,8 +16,8 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     // MARK: - Properties
     let defaults = UserDefaults.standard
-    var allNotes = NoteString.globalNote.notes
-//    var notesData: NotesModel = NotesModel() {
+    var notesData: NotesModel = NotesModel()
+//    {
 //        didSet {
 //            DispatchQueue.main.async {
 //                self.notesTableView.reloadData()
@@ -25,7 +25,6 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
 //        }
 //    }
     var test = ["Hello", "Love", "Go Ahead", "Fuck U", "Hello", "Love", "Go Ahead", "Fuck U", "Hello", "Love", "Go Ahead", "Fuck U", "Hello", "Love", "Go Ahead", "Fuck U"]
-//    lazy var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -35,28 +34,19 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(test.last)
-//        notesTableView.reloadData()
-        print(allNotes)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
+        print(notesData.notes)
     }
 
     // MARK: - Table View Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return notesData.notes.count
-        return test.count
+        return notesData.notes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = notesTableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as? NoteTableViewCell else {
             return UITableViewCell()
         }
-//        cell.cellModel = notesData.notes[indexPath.row]
-        cell.noteLabel.text = test[indexPath.row]
+        cell.cellModel = notesData.notes[indexPath.row]
         return cell
     }
 
@@ -71,7 +61,7 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     // MARK: - Actions
     @IBAction func sortNotes(_ sender: Any) {
-
+        // TODO sort
     }
 
     // MARK: - Navigation
@@ -80,9 +70,10 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
         case "editNote":
             let detailVC = segue.destination as! DetailViewController
             var indexPath: IndexPath = self.notesTableView.indexPathForSelectedRow!
-            detailVC.noteText = test[indexPath.row]
+            detailVC.noteText = notesData.notes[indexPath.row].noteText
         case "createNewNote":
-            print("Create")
+            let detailVC = segue.destination as! DetailViewController
+            detailVC.allData.notes += notesData.notes
         default:
             break
         }
@@ -94,7 +85,6 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
         notesTableView.dataSource = self
         notesTableView.delegate = self
         // Register for NoteTableViewCell
-//        notesTableView.register(UINib(nibName: NoteTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: NoteTableViewCell.identifier)
         notesTableView.register(UINib(nibName: NoteTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: "noteCell")
         notesTableView.keyboardDismissMode = .onDrag
         setupNavBar()

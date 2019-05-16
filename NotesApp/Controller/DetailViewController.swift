@@ -12,24 +12,43 @@ class DetailViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var noteTextView: UITextView!
-    @IBOutlet weak var saveNote: UIBarButtonItem!
 
     // MARK: - Properties
+    var allData = NotesModel()
+    private var note = Note()
     var noteText = String()
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         noteTextView.endEditing(true)
-
     }
 
+    // MARK: - Action
+    @objc func saveButton(_ sender: UIBarButtonItem) {
+//        let notesVC = storyboard?.instantiateViewController(withIdentifier: "NotesViewController") as! NotesViewController
+        note.noteText = noteTextView.text
+        note.time = Date()
+//        notesVC.notesData.notes.append(note)
+        performSegue(withIdentifier: "notesSegue", sender: nil)
+    }
+
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "notesSegue" {
+            let navContr = segue.destination as! UINavigationController
+            let notesVC = navContr.topViewController as! NotesViewController
+            allData.notes.append(note)
+            notesVC.notesData = allData
+        }
+    }
+
+    // MARK: - Private methods
     private func setupUI() {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.backBarButtonItem?.tintColor = .black
@@ -39,14 +58,6 @@ class DetailViewController: UIViewController {
         noteTextView.text = noteText
     }
 
-    @objc func saveButton(_ sender: UIBarButtonItem) {
-        let notesVC = storyboard?.instantiateViewController(withIdentifier: "NotesViewController") as! NotesViewController
-//        notesVC.test.append(noteTextView.text)
-        print(noteTextView.text!)
-//        present(NotesViewController(), animated: true, completion: nil)
 
-        navigationController?.popToRootViewController(animated: true)
-    }
-    // MARK: - Navigation
 
  }

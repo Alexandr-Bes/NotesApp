@@ -25,9 +25,3 @@ struct Note {
         self.time = Date()
     }
 }
-
-class NoteString {
-    struct globalNote {
-        static var notes = [String]()
-    }
-}

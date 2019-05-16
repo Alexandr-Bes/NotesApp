@@ -70,7 +70,7 @@
         <!--Detail View Controller-->
         <scene sceneID="ITu-K5-AV7">
             <objects>
-                <viewController id="UYw-lZ-ODC" customClass="DetailViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="UYw-lZ-ODC" customClass="DetailViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIQ-ka-45m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,6 +93,7 @@
                     </view>
                     <connections>
                         <outlet property="noteTextView" destination="yGS-3r-5qW" id="DTo-Xu-vai"/>
+                        <segue destination="g8g-DT-cBp" kind="show" identifier="notesSegue" id="gZ5-g6-Sy0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kru-IA-V07" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,6 +130,6 @@
         <image name="sortIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QJ7-Oq-6bF"/>
+        <segue reference="MP9-iS-eIR"/>
     </inferredMetricsTieBreakers>
 </document>
