@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NotesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
+class NotesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchControllerDelegate, NoteDelegate {
 
     // MARK: Outlets
     @IBOutlet weak var notesTableView: UITableView!
@@ -34,7 +34,6 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(notesData.notes)
     }
 
     // MARK: - Table View Data Source Methods
@@ -48,6 +47,16 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         cell.cellModel = notesData.notes[indexPath.row]
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, nil) in
+            print("Edit")
+        }
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, nil) in
+            print("Delete")
+        }
+        return UISwipeActionsConfiguration(actions: [delete, edit])
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -74,12 +83,13 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
         case "createNewNote":
             let detailVC = segue.destination as! DetailViewController
             detailVC.allData.notes += notesData.notes
+            detailVC.delegate = self
         default:
             break
         }
     }
 
-    // Private Methods
+    // MARK: - Private Methods
     private func setupUI() {
         title = "Заметки"
         notesTableView.dataSource = self
@@ -96,6 +106,14 @@ class NotesViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchController.delegate = self
         searchController.searchBar.setupDefaultColor()
         navigationItem.searchController = searchController
+    }
+
+    func newNote(note: String) {
+        print("New note is: \(note)")
+    }
+
+    func addNewNote(note: Note) {
+        notesData.notes.append(note)
     }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA15B3C922931CF70033EB79 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B3C822931CF70033EB79 /* TestViewController.swift */; };
 		FA1D6345228060C500C2AA13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D6344228060C500C2AA13 /* AppDelegate.swift */; };
 		FA1D6347228060C500C2AA13 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D6346228060C500C2AA13 /* NotesViewController.swift */; };
 		FA1D634A228060C500C2AA13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1D6348228060C500C2AA13 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA15B3C822931CF70033EB79 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		FA1D6341228060C500C2AA13 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1D6344228060C500C2AA13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA1D6346228060C500C2AA13 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				FA1D6346228060C500C2AA13 /* NotesViewController.swift */,
 				FA594DC8228C14B000A1274A /* DetailViewController.swift */,
+				FA15B3C822931CF70033EB79 /* TestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA15B3C922931CF70033EB79 /* TestViewController.swift in Sources */,
 				FA594DC9228C14B000A1274A /* DetailViewController.swift in Sources */,
 				FA1D636622807FB100C2AA13 /* UITableViewCell+Extension.swift in Sources */,
 				FA1D6347228060C500C2AA13 /* NotesViewController.swift in Sources */,

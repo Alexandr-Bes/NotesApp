@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol NoteDelegate: class {
+    func newNote(note: String)
+}
+
 class DetailViewController: UIViewController {
 
     // MARK: - Outlets
@@ -17,6 +21,7 @@ class DetailViewController: UIViewController {
     var allData = NotesModel()
     private var note = Note()
     var noteText = String()
+    weak var delegate: NoteDelegate? = nil
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -35,6 +40,9 @@ class DetailViewController: UIViewController {
         note.noteText = noteTextView.text
         note.time = Date()
 //        notesVC.notesData.notes.append(note)
+
+        delegate?.newNote(note: noteTextView.text)
+
         performSegue(withIdentifier: "notesSegue", sender: nil)
     }
 
@@ -43,13 +51,14 @@ class DetailViewController: UIViewController {
         if segue.identifier == "notesSegue" {
             let navContr = segue.destination as! UINavigationController
             let notesVC = navContr.topViewController as! NotesViewController
-            allData.notes.append(note)
-            notesVC.notesData = allData
+            notesVC.addNewNote(note: note)
+//            allData.notes.append(note)
+//            notesVC.notesData = allData
         }
     }
 
     // MARK: - Private methods
-    private func setupUI() {
+    func setupUI() {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.backBarButtonItem?.tintColor = .black
         let saveButton = UIBarButtonItem(title: "Сохранить", style: .done, target: self, action: #selector(DetailViewController.saveButton(_:)))
